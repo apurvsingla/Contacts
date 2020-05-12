@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        <%= title %>
+    </title>
+</head>
+
+<body>
+    <h1>Hey</h1>
+    <form action="/post" method="POST">
+        <input type="text" name="name" placeholder="name">
+        <input type="number" name="phone" placeholder="number">
+        <button type="submit">Submit</button>
+    </form>
+    <div>
+        <% if(locals.contact_list) {%>
+            <ul>
+                <% for(let i of locals.contact_list){ %>
+                    <li>
+                        <form action="/delete" method="POST">
+                            <a href="/delete">
+                                <button>Delete Post</button>
+                            </a>
+                        </form>
+                    </li>
+                    <li>
+                        <%= i.name %>
+                    </li>
+                    <li>
+                        <%= i.phone %>
+                    </li>
+                    <% } %>
+            </ul>
+            <% } %>
+    </div>
+</body>
+
+</html>
